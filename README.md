@@ -5,28 +5,26 @@
 ### Quick start
 
 ```bash
-// Install dependencies
-$ yarn
+// Install dependencies for server
+$ cd server && yarn
+
+// Install dependencies for client
+$ cd client && yarn
 
 // Run server
-$ cd server & yarn start
+$ cd server && yarn start
 
 // Run client
-$ cd client & yarn start
+$ cd client && yarn start
 ```
 Config `nginx`: `/etc/nginx/sites-enabled/default`
 
 ```
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-	index index.html index.htm index.nginx-debian.html;
-
-	server_name cuongw;
-
-	location ~* "^/[0-9a-z@]{5,15}$"  {
-  	rewrite ^/(.*)$ http://localhost:8080/api/item/$1 redirect;
-	}
+  listen 80;
+  index index.html;
+  server_name cuongw;
+  rewrite ^/(.*)$ https://github.com/cuongw/url-shortener redirect;
 }
 ```
 
